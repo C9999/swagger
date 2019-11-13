@@ -7,14 +7,15 @@ var request = require("supertest"),
     joiAssert = require("joi-assert");
 
 const URL = process.env.NODE_ENV;
+const pet_id = 4
 const timeout = 5000;
-const MAIN = "/v2/pet/4";
+const PATH_ID = `/v2/pet/${pet_id}`;
 
 describe("PET", function () {
     it("Hello world", function (done) {
         this.timeout(timeout);
         request(URL)
-            .get(MAIN)
+            .get(PATH_ID)
             .expect("Content-Type", /json/)
             .end(function (err, res) {
                 console.log(res.body)
